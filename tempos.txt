@@ -1,0 +1,4 @@
+Elementos;BubbleSort;InsertionSort;SelectionSort;MergeSort;QuickSort;ShellSort;
+25000;2.775;0.660;1.132;0.012;0.005;0.007;
+50000;10.911;2.647;4.571;0.025;0.011;0.015;
+75000;
