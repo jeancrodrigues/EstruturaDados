@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 typedef struct{
-	int elem[100];
+	int *elem;
 	int topo;
 	int max;
 } Pilha;
@@ -10,9 +10,8 @@ typedef struct{
 /* insere um elemento no topo da pilha */
 void push(Pilha *p, int val)
 {	
-	int t = p->topo;
-	printf("\n%p %d %d", p, t ,val);
-  	p->elem[t] = val;
+	int * el = p->elem;
+	el[p->topo] = val;
   	p->topo+=1;
 }
 
@@ -20,13 +19,13 @@ void push(Pilha *p, int val)
 int pop(Pilha *p)
 {
   p->topo--;
-  return p->elem[p->topo];
+  return *(p->elem + p->topo);
 }
 
 /* recupera um elemento do topo da pilha sem remove-lo*/
 int elemTopo(Pilha *p)
 {
-  return p->elem[p->topo-1];
+  return *( p->elem + p->topo-1);
 }
 
 /* verifica se a pilha esta vazia */
@@ -54,19 +53,13 @@ void printPilha(Pilha *p){
 	printf("\n");
 	int i;
 	for(i = 0; i < p->topo ; i++){
-		printf("%d ",p->elem[i]);	
+		printf("%d ", *(p->elem + i));	
 	}
 }
 
 void initPilha(Pilha *p, int tamanho){
-	printf("\nbegin init pilha %p",p);	
-	p = (Pilha *) malloc(sizeof(Pilha));
-	printf("\nallocated pilha %p",p);	
-	//p->elem = (int *)malloc(tamanho * sizeof(int));
+	p = (Pilha *) malloc(sizeof(Pilha));		
+	p->elem = (int *)calloc(tamanho , sizeof(int));	
 	p->topo = 0;
 	p->max = tamanho;
-	int i = 0;
-	for(;i<tamanho;i++) p->elem[i] = 0;
-	printPilha(p);
-	printf("\nfinish init pilha, <Pilha:%p topo:%d , max:%d> ", p , p->topo , p->max);
 }

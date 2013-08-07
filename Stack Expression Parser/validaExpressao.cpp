@@ -98,15 +98,15 @@ int validaExpressao( char * exp ){
 int main()
 {	
 	char num[] = "1234";
-	Pilha n;
+	Pilha *n;
 		
-	initPilha(&n,5);
+	initPilha(n,5);
 	
 	for(int i = 0; i < 4;i++){
-		push(&n,num[i]-48);
+		push(n,num[i]-48);
 	}
 	
-	printf("%s %d",num,evalNumeros(&n));
+	printf("%s %d",num,evalNumeros(n));
 	
 	/*char exp[100]; //= "( (1+1) + (3*6) * 9 ) + ( { 3 ^ 2 } ) + { [34 % 5] + 2 }";
 	
