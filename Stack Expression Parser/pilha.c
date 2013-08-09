@@ -8,10 +8,9 @@ typedef struct{
 } Pilha;
 
 /* insere um elemento no topo da pilha */
-void push(Pilha *p, int val)
-{	
-	int * el = p->elem;
-	el[p->topo] = val;
+void push(Pilha *p, int val){	
+	int *el = p->elem;
+	*(el + p->topo) = val;
   	p->topo+=1;
 }
 
@@ -57,9 +56,10 @@ void printPilha(Pilha *p){
 	}
 }
 
-void initPilha(Pilha *p, int tamanho){
-	p = (Pilha *) malloc(sizeof(Pilha));		
+Pilha* initPilha(int tamanho){
+	Pilha *p = (Pilha *)malloc(sizeof(Pilha));		
 	p->elem = (int *)calloc(tamanho , sizeof(int));	
 	p->topo = 0;
 	p->max = tamanho;
+	return p;
 }

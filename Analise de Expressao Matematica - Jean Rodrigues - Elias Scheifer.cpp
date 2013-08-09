@@ -20,17 +20,16 @@ bool testaUltimo(int * pilha,char c){
 	return 0;
 }
 
-int evaluateExpressao( char * exp ){
+int validaExpressao( char * exp ){
 	int i = 0;
 	bool valida = 1;		
 	
 	while( exp[i] != '\0' && valida){		
 		char c = exp[i]; 
-		i++;
-				
-		if( c-48 < 0 || c-48 > 9 ){//na tabela ascii o caracter '0' vale 48
+		i++;				
+		if( c-48 < 0 || c-48 > 9 ){ // caracter diferente de numeros
 			
-			switch(c){ //nossa expressao só aceita numeros , espacos e os caracteres '({[]})'
+			switch(c){ 
 				
 				case('('): push(s,c);
 				break;
@@ -43,24 +42,7 @@ int evaluateExpressao( char * exp ){
 				case(']'): valida = testaUltimo(s,'[');
 				break;
 				case('}'): valida = testaUltimo(s,'{');
-				break;
-				
-				case(' '):;
-				break;
-				case('+'):;
-				break;
-				case('-'):;
-				break;
-				case('*'):;
-				break;
-				case('/'):;
-				break;
-				case('%'):;
-				break;
-				case('^'):;
-				break;
-				
-				default: valida = 0;					
+				break;				
 			}
 		}		
 	}				

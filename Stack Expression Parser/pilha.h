@@ -6,4 +6,4 @@ int elemTopo(Pilha *p);
 int pop(Pilha *p);
 int count(Pilha *p);
 void push(Pilha *p, int val);
-void initPilha(Pilha *p, int tamanho);
+Pilha* initPilha(int tamanho);
